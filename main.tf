@@ -2,6 +2,11 @@ provider "aws" {
   region = "us-east-1"
 }
 
+resource "aws_kms_key" "bw-sentinel" {
+  description             = "This key is used to encrypt bucket objects"
+  deletion_window_in_days = 7
+}
+
 resource "aws_s3_bucket" "bw-sentinel" {
     bucket = "bw-sentinel"
     region = "us-east-1"
@@ -9,7 +14,11 @@ resource "aws_s3_bucket" "bw-sentinel" {
     server_side_encryption_configuration {
         rule {
           apply_server_side_encryption_by_default {
-            sse_algorithm = "AES256"
+            kms_master_key_id = "${aws_kms_key.bw-sentinel.arn}"
+            # Good algorithm
+            sse_algorithm = "aws:kms"
+            # Bad algorithm
+            #sse_algorithm = "AES256"
          }
        }
     }
