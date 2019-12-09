@@ -34,6 +34,7 @@ data "aws_iam_policy_document" "bw-sentinel-policy" {
       type        = "*"
       identifiers = ["*"]
     }
+  }
 }
 
 # Good Policy
