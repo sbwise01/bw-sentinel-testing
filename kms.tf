@@ -56,3 +56,10 @@ resource "aws_kms_grant" "bw-sentinel-4" {
   grantee_principal = "arn:aws:iam::238080251717:role/FogOps"
   operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
 }
+
+resource "aws_kms_grant" "bw-sentinel-5" {
+  name              = "bw-sentinel-5"
+  key_id            = "${aws_kms_key.bw-sentinel-2.key_id}"
+  grantee_principal = "arn:aws:iam::238080251717:role/eksworkshop-admin"
+  operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
+}
