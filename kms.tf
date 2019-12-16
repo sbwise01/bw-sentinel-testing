@@ -1,10 +1,17 @@
-#resource "aws_kms_key" "bw-sentinel" {
-#  description             = "This key is used to encrypt bucket objects"
-#  deletion_window_in_days = 7
-#  enable_key_rotation     = true
-#  is_enabled              = true
-#  policy                  = "${data.aws_iam_policy_document.bw-sentinel-policy.json}"
-#}
+resource "aws_kms_key" "bw-sentinel" {
+  description             = "This key is used to encrypt bucket objects"
+  deletion_window_in_days = 7
+  enable_key_rotation     = true
+  is_enabled              = true
+  policy                  = "${data.aws_iam_policy_document.bw-sentinel-policy.json}"
+}
+
+resource "aws_kms_grant" "bw-sentinel" {
+  name              = "bw-sentinel"
+  key_id            = "${aws_kms_key.bw-sentinel.key_id}"
+  grantee_principal = "arn:aws:iam::238080251717:role/TF_PROVISIONER"
+  operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
+}
 
 data "aws_iam_policy_document" "bw-sentinel-policy" {
   statement {
