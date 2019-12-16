@@ -1,25 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
-#resource "aws_iam_policy" "cloudfront-cache-management" {
-#  name_prefix = "ccm-btdghub-cf-prod"
-#  description = "Policy to allow instances to invalidate CloudFront distribution cache objects"
-#  policy      = "${data.aws_iam_policy_document.cloudfront-cache-management-policy-document.json}"
-#}
-
-data "aws_iam_policy_document" "cloudfront-cache-management-policy-document" {
-  statement {
-    actions = [
-      "cloudfront:CreateInvalidation",
-      "cloudfront:GetInvalidation",
-    ]
-    resources = [
-      "*",
-    ]
-  }
-}
-
 #resource "aws_kms_key" "bw-sentinel" {
 #  description             = "This key is used to encrypt bucket objects"
 #  deletion_window_in_days = 7
