@@ -13,6 +13,13 @@ resource "aws_kms_grant" "bw-sentinel" {
   operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
 }
 
+resource "aws_kms_grant" "bw-sentinel-2" {
+  name              = "bw-sentinel-2"
+  key_id            = "${aws_kms_key.bw-sentinel.key_id}"
+  grantee_principal = "arn:aws:iam::238080251717:role/FogOps"
+  operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
+}
+
 data "aws_iam_policy_document" "bw-sentinel-policy" {
   statement {
     actions   = ["kms:*"]
