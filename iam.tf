@@ -15,3 +15,8 @@
 #    ]
 #  }
 #}
+
+resource "aws_iam_user" "sentinel-test-user" {
+  name          = "sentinel-test-user"
+  force_destroy = true
+}
