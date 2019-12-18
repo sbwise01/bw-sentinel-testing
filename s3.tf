@@ -46,7 +46,10 @@ resource "aws_s3_bucket_policy" "airbnb-brad-internal-only" {
 data "aws_iam_policy_document" "bw-sentinel-policy" {
   statement {
     effect    = "Allow"
-    actions   = ["s3:PutObjectACL"]
+    actions   = [
+      "s3:PutObjectACL",
+      "s3:GetObject"
+    ]
     resources = [
       "arn:aws:s3:::bw-sentinel/*",
       "arn:aws:s3:::bw-sentinel"
