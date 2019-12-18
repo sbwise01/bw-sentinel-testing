@@ -20,20 +20,20 @@
 #  operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
 #}
 
-data "aws_iam_policy_document" "bw-sentinel-policy" {
-  statement {
-    actions   = ["kms:*"]
-    resources = ["*"]
-
-    principals {
-      type        = "AWS"
-      identifiers = [
-        "arn:aws:iam::238080251717:root",
-        "arn:aws:iam::238080251717:user/brad"
-      ]
-    }
-  }
-}
+#data "aws_iam_policy_document" "bw-sentinel-policy" {
+#  statement {
+#    actions   = ["kms:*"]
+#    resources = ["*"]
+#
+#    principals {
+#      type        = "AWS"
+#      identifiers = [
+#        "arn:aws:iam::238080251717:root",
+#        "arn:aws:iam::238080251717:user/brad"
+#      ]
+#    }
+#  }
+#}
 
 #resource "aws_kms_key" "bw-sentinel-2" {
 #  description             = "This key is used to encrypt bucket objects"
