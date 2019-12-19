@@ -50,7 +50,6 @@ data "aws_iam_policy_document" "bw-sentinel-policy" {
       "s3:PutObjectACL",
       "s3:GetObject"
     ]
-    resources = ["*"]
 
     principals {
       type        = "*"
