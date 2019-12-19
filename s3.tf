@@ -71,36 +71,36 @@ data "aws_iam_policy_document" "bw-sentinel-1-policy" {
   }
 }
 
-resource "aws_s3_bucket" "bw-sentinel-2" {
-    bucket = "bw-sentinel-2"
-    region = "us-east-1"
-}
-
-resource "aws_s3_bucket_policy" "bw-sentinel-2-policy" {
-    bucket = "${aws_s3_bucket.bw-sentinel-2.id}"
-    policy = "${data.aws_iam_policy_document.bw-sentinel-2-policy.json}"
-}
-
-data "aws_iam_policy_document" "bw-sentinel-2-policy" {
-  statement {
-    effect    = "Allow"
-    actions   = [
-      "s3:PutObjectACL",
-      "s3:GetObject"
-    ]
-    resources = [
-      "arn:aws:s3:::bw-sentinel-2/*",
-      "arn:aws:s3:::bw-sentinel-2"
-    ]
-
-    principals {
-      type        = "*"
-      identifiers = ["*"]
-    }
-  }
-}
-
-#resource "aws_s3_bucket" "bw-sentinel-3" {
-#    bucket = "bw-sentinel-3"
+#resource "aws_s3_bucket" "bw-sentinel-2" {
+#    bucket = "bw-sentinel-2"
 #    region = "us-east-1"
 #}
+#
+#resource "aws_s3_bucket_policy" "bw-sentinel-2-policy" {
+#    bucket = "${aws_s3_bucket.bw-sentinel-2.id}"
+#    policy = "${data.aws_iam_policy_document.bw-sentinel-2-policy.json}"
+#}
+#
+#data "aws_iam_policy_document" "bw-sentinel-2-policy" {
+#  statement {
+#    effect    = "Allow"
+#    actions   = [
+#      "s3:PutObjectACL",
+#      "s3:GetObject"
+#    ]
+#    resources = [
+#      "arn:aws:s3:::bw-sentinel-2/*",
+#      "arn:aws:s3:::bw-sentinel-2"
+#    ]
+#
+#    principals {
+#      type        = "*"
+#      identifiers = ["*"]
+#    }
+#  }
+#}
+
+resource "aws_s3_bucket" "bw-sentinel-3" {
+    bucket = "bw-sentinel-3"
+    region = "us-east-1"
+}
