@@ -1,18 +1,18 @@
-resource "aws_s3_bucket" "bw-sentinel-logging" {
-    bucket = "bw-sentinel-logging"
-    region = "us-east-1"
-
-}
-
-resource "aws_s3_bucket" "bw-sentinel" {
-    bucket = "bw-sentinel"
-    region = "us-east-1"
-    logging {
-      target_bucket = "${aws_s3_bucket.bw-sentinel-logging.id}"
-      target_prefix = "bw-sentinel/"
-    }
-}
-
+#resource "aws_s3_bucket" "bw-sentinel-logging" {
+#    bucket = "bw-sentinel-logging"
+#    region = "us-east-1"
+#
+#}
+#
+#resource "aws_s3_bucket" "bw-sentinel" {
+#    bucket = "bw-sentinel"
+#    region = "us-east-1"
+#    logging {
+#      target_bucket = "${aws_s3_bucket.bw-sentinel-logging.id}"
+#      target_prefix = "bw-sentinel/"
+#    }
+#}
+#
 #resource "aws_kms_key" "bw-sentinel" {
 #  description             = "This key is used to encrypt bucket objects"
 #  deletion_window_in_days = 7
