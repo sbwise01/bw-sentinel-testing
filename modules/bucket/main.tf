@@ -6,12 +6,12 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "replica-bucket" {
-  bucket = "${var.bucket_name}"
+  bucket = var.bucket_name
   region = "us-west-2"
 }
 
 resource "aws_s3_bucket_inventory" "bucket-inventory" {
-  bucket                   = "${aws_s3_bucket.replica-bucket.id}"
+  bucket                   = aws_s3_bucket.replica-bucket.id
   name                     = "inventory"
   included_object_versions = "All"
   schedule {
