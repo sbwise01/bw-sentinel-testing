@@ -1,5 +1,5 @@
 data "terraform_remote_state" "buckets" {
-  backend = "remote"
+  backend = "s3"
 
   config = {
     bucket  = "bw-terraform-state-us-east-1"
