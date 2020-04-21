@@ -14,7 +14,7 @@ resource "aws_iam_policy" "test-policy-10" {
             "Sid":      "Test2",
             "Effect":   "Allow",
             "Action":   [ "s3:GetObject" ],
-            "Resource": "${data.terraform_remote_state.buckets.bw-multi-workspace-sentinel-test-arn}"
+            "Resource": "${data.terraform_remote_state.buckets.bucket_arn}"
         }
     ]
 }
