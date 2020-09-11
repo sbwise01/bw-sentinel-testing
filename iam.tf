@@ -17,7 +17,7 @@ resource "aws_iam_policy" "test-policy-10" {
               "s3:DeleteObject",
               "s3:GetObject"
             ],
-            "Resource": "${data.terraform_remote_state.buckets.outputs.bucket_arn}"
+            "Resource": "*"
         }
     ]
 }
